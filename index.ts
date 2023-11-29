@@ -38,7 +38,7 @@ import WebSocket from 'ws';
 
 process.env.OAUTH_TWITCH
 const oAuth = process.env.OAUTH_TWITCH
-const nick = `NICK`
+const nick = `prixenBot`
 
 const channel = process.env.CANAL_A_CONECTARSE_TWITCH
 
@@ -53,6 +53,7 @@ socket.addEventListener('open', ()=> {
 socket.addEventListener('message', (event) => {
     
     const data:string = event.data.toString();
+    console.log(data)
 
     if(data.includes("PRIVMSG")){
 
@@ -62,9 +63,10 @@ socket.addEventListener('message', (event) => {
             const cadena = data;
             const partes = cadena.split(":");
             const mensaje = partes.slice(2).join(":");
-            console.log(mensaje)
+            const mensajeParseado = mensaje.replace(/\r\n$/, '');
+
             
-            mensajeRepostory.addMensaje(userName,mensaje)
+            mensajeRepostory.addMensaje(userName,mensajeParseado)
         }
     }
 })
