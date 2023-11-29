@@ -1,0 +1,30 @@
+APLICACIÓN PARA GUARDAR LOS MENSAJES DE UN CHAT DE TWITCH EN UNA BASE DE DATOS MONGODB
+
+DESPLIEGUE:
+1. Crear y configurar la base de datos con mongoDB, pasos para desplegarla con docker:
+
+
+archivo compose.yaml:
+----------------------------
+services:
+  mongo:
+    restart: always
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+----------------------------
+
+$ docker compose up
+
+La base de datos ya deberia de estar activa, a continuación crea una base de datos llamada twitch_chat con una coleccion llamada mensajes. para hacerlo mediante interfaz grafica necesitaras mongo compass(https://www.mongodb.com/es/products/tools/compass)
+
+//NOTA//
+Si vas a llevar a produccion esta aplicacion tambien deberas sustituir DB_CONN_STRING
+
+2. Cambiar .env
+
+cambiar el valor de OAUTH_TWITCH por tu oauth, puedes generarlo desde esta web : https://twitchapps.com/tmi/
+cambiar el valor de CANAL_A_CONECTARSE_TWITCH por el nombre del canal al que deseas conectarte
+
