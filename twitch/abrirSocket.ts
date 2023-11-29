@@ -1,4 +1,3 @@
-
 import WebSocket from 'ws';
 
 process.env.OAUTH_TWITCH

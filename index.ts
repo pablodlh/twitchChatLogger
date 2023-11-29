@@ -1,7 +1,6 @@
 import express from "express";
 import createMongoConnection from "./context/MongoConnection";
 import MensajeRepositoryMongoDB from "./mensajes/infrastructure/db/mensaje.mongo";
-import MensajeRepository from "./mensajes/domain/MensajeRepository";
 import { Request, Response } from 'express';
 import dotenv from "dotenv";
 import abrirSocket from "./twitch/abrirSocket";
@@ -21,7 +20,6 @@ app.use(express.json());
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
 
 
 const mensajeRepostory  = new MensajeRepositoryMongoDB();

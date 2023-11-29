@@ -1,3 +1,4 @@
+import MensajeRepositoryMongoDB from "../mensajes/infrastructure/db/mensaje.mongo";
 
 import WebSocket from 'ws';
 
@@ -5,6 +6,7 @@ process.env.OAUTH_TWITCH
 const oAuth = process.env.OAUTH_TWITCH
 const nick = `prixenBot`
 
+const mensajeRepostory  = new MensajeRepositoryMongoDB();
 const channel = process.env.CANAL_A_CONECTARSE_TWITCH
 
 const socket = new WebSocket("wss://irc-ws.chat.twitch.tv:443")
