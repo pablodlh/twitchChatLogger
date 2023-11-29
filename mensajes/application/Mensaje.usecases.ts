@@ -12,8 +12,8 @@ export class MensajeUseCases{
         return await this.mensajeRepository.getAllMensajes();
       }
 
-      async addMensaje(usuario:string, contenidoMensaje:string){
-        return await this.mensajeRepository.addMensaje(usuario,contenidoMensaje)
+      async addMensaje(usuario:string, contenidoMensaje:string,canal: string){
+        return await this.mensajeRepository.addMensaje(usuario,contenidoMensaje,canal)
 
       }
       

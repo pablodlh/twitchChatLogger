@@ -16,7 +16,8 @@ export default class MensajeRepositoryMongoDB implements MensajeRepository {
             const mensaje: Mensaje = {
                 id: String(mensajeFromDB._id),
                 usuario: mensajeFromDB.usuario,
-                contenidoMensaje: mensajeFromDB.contenidoMensaje
+                contenidoMensaje: mensajeFromDB.contenidoMensaje,
+                canal: mensajeFromDB.canal
             };
             return mensaje
         })
@@ -25,11 +26,12 @@ export default class MensajeRepositoryMongoDB implements MensajeRepository {
     }
 
 
-    async addMensaje(usuarioRecibido: string,contenidoMensajeRecibido: string){
+    async addMensaje(usuarioRecibido: string,contenidoMensajeRecibido: string, canalRecibido: string){
 
         const mensaje: Mensaje = {
             usuario:  usuarioRecibido,
-            contenidoMensaje : contenidoMensajeRecibido
+            contenidoMensaje : contenidoMensajeRecibido,
+            canal: canalRecibido
         }
 
         await collections.mensajes.insertOne(mensaje)

@@ -66,7 +66,9 @@ socket.addEventListener('message', (event) => {
             const mensajeParseado = mensaje.replace(/\r\n$/, '');
 
             
-            mensajeRepostory.addMensaje(userName,mensajeParseado)
+            if (userName && mensajeParseado && channel) {
+                mensajeRepostory.addMensaje(userName, mensajeParseado, channel);
+            }
         }
     }
 })
