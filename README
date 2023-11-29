@@ -20,11 +20,8 @@ $ docker compose up
 
 Crea una base de datos llamada twitch_chat con una coleccion llamada mensajes. para hacerlo mediante interfaz grafica necesitaras mongo compass(https://www.mongodb.com/es/products/tools/compass)
 
-//NOTA//
-Si vas a llevar a produccion esta aplicacion tambien deberas sustituir DB_CONN_STRING
 
-2. Cambiar .env
 
-cambiar el valor de OAUTH_TWITCH por tu oauth, puedes generarlo desde esta web : https://twitchapps.com/tmi/
-cambiar el valor de CANAL_A_CONECTARSE_TWITCH por el nombre del canal al que deseas conectarte
+2. Cambiar el .env
 
+Tu oauth lo puedes generar facilmente desde esta web: https://twitchapps.com/tmi/
