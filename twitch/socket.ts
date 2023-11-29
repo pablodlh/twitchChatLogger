@@ -13,7 +13,6 @@ const socket = new WebSocket("wss://irc-ws.chat.twitch.tv:443")
 
 
 function abrirSocket(){
-    console.log("socket abierto")
     socket.addEventListener('open', ()=> {
         socket.send(`PASS oauth:${oAuth}`)
         socket.send(`NICK ${nick}`)
@@ -23,7 +22,6 @@ function abrirSocket(){
 
 function escucharSocket(){
     socket.addEventListener('message', (event) => {
-    console.log("escuchadorsocket abierto")
 
         
         const data:string = event.data.toString();
