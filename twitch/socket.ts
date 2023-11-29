@@ -1,18 +1,30 @@
+import WebSocket from 'ws';
 import MensajeRepositoryMongoDB from "../mensajes/infrastructure/db/mensaje.mongo";
 
-import WebSocket from 'ws';
 
 process.env.OAUTH_TWITCH
 const oAuth = process.env.OAUTH_TWITCH
 const nick = `prixenBot`
 
-const mensajeRepostory  = new MensajeRepositoryMongoDB();
 const channel = process.env.CANAL_A_CONECTARSE_TWITCH
+const mensajeRepostory  = new MensajeRepositoryMongoDB();
 
 const socket = new WebSocket("wss://irc-ws.chat.twitch.tv:443")
 
-export default function escucharSocket(){
+
+function abrirSocket(){
+    console.log("socket abierto")
+    socket.addEventListener('open', ()=> {
+        socket.send(`PASS oauth:${oAuth}`)
+        socket.send(`NICK ${nick}`)
+        socket.send(`JOIN #${channel}`)
+    })
+}
+
+function escucharSocket(){
     socket.addEventListener('message', (event) => {
+    console.log("escuchadorsocket abierto")
+
         
         const data:string = event.data.toString();
         console.log(data)
@@ -35,4 +47,4 @@ export default function escucharSocket(){
         }
     })
     }
-    
+    export {abrirSocket,escucharSocket}
