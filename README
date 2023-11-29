@@ -18,7 +18,7 @@ services:
 
 $ docker compose up
 
-La base de datos ya deberia de estar activa, a continuación crea una base de datos llamada twitch_chat con una coleccion llamada mensajes. para hacerlo mediante interfaz grafica necesitaras mongo compass(https://www.mongodb.com/es/products/tools/compass)
+Crea una base de datos llamada twitch_chat con una coleccion llamada mensajes. para hacerlo mediante interfaz grafica necesitaras mongo compass(https://www.mongodb.com/es/products/tools/compass)
 
 //NOTA//
 Si vas a llevar a produccion esta aplicacion tambien deberas sustituir DB_CONN_STRING
