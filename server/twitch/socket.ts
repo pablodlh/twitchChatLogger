@@ -1,8 +1,9 @@
 import WebSocket from 'ws';
 import MensajeRepositoryMongoDB from "../mensajes/infrastructure/db/mensaje.mongo";
+import dotenv from "dotenv";
 
+dotenv.config();
 
-process.env.OAUTH_TWITCH
 const oAuth = process.env.OAUTH_TWITCH
 const nick = `prixenBot`
 

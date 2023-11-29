@@ -20,10 +20,3 @@ app.use("/mensajes", mensajesRouter)
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-
-
-
-
-
