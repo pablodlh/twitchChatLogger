@@ -1,4 +1,4 @@
-export default interface User {
+export default interface Mensaje {
     id?: string;
     usuario: string;
     contenidoMensaje: string;

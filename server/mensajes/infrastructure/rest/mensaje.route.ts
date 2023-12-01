@@ -1,10 +1,12 @@
 import express from "express";
+import cors from "cors";
 import MensajeRepositoryMongoDB from "../db/mensaje.mongo";
 import MensajeRepository from "../../domain/MensajeRepository"
 import { Request, Response } from 'express';
 
-
 const router = express.Router();
+router.use(cors()); // Use cors middleware here
+
 const mensajeRepostory: MensajeRepository  = new MensajeRepositoryMongoDB();
 
 router.get("/", async(req,res: Response) => {
