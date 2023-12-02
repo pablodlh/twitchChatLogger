@@ -1,14 +1,10 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react'
+import Mensaje from './models/Mensaje'
+import MensajesList from './components/MensajesList'
+import Filtros from './components/Filtros'
 
-interface Mensaje {
-  id: string
-  usuario: string
-  contenidoMensaje: string
-  canal: string
-}
-
-const App = (): any => {
+const App = (): JSX.Element => {
   const [todosLosMensajes, setTodosLosMensajes] = useState<Mensaje[]>([])
   const [mensajesFiltrados, setMensajesFiltrados] = useState<Mensaje[]>([])
   const [usuarioFiltrado, setUsuarioFiltrado] = useState('')
@@ -34,9 +30,11 @@ const App = (): any => {
   const filtrarPorCanalYUsuario = (): void => {
     setMensajesFiltrados(todosLosMensajes.filter((mensaje: { canal: string, usuario: string }) => mensaje.canal === canalFiltrado && mensaje.usuario === usuarioFiltrado))
   }
+
   const filtrarTodos = (): void => {
     setMensajesFiltrados(todosLosMensajes)
   }
+
   const actualizarMensajes = (): void => {
     fetch('http://localhost:8080/mensajes')
       .then(response => response.json())
@@ -49,46 +47,17 @@ const App = (): any => {
 
   return (
     <main className='text-white'>
-      <h1 className='text-white text-3xl  text-center  mb-4 '>Mensajes guardados en la base de datos</h1>
-      <section className='flex flex-col items-start ml-6'>
-        <section className='botones flex   justify-between w-full'>
-
-        <label className=' flex'> Usuario
-          <input
-            className='text-black ml-2'
-            id='filtrarUsuario'
-            onChange={e => { setUsuarioFiltrado(e.target.value) }}
-          />
-        </label>
-
-        <label className=' flex'> Canal
-          <input
-            className='text-black ml-2'
-            id='filtrarUsuario'
-            onChange={e => { setCanalFiltrado(e.target.value) }}
-          />
-        </label>
-
-        <label>
-        </label>
-
-      <section>
-      <button onClick={filtrarPorUsuario} className=' ml-1  border border-purple-800  bg-purple-400'>Filtrar Por Usuario</button>
-      <button onClick={filtrarPorCanal} className=' ml-1  border border-purple-800  bg-purple-400'>Filtrar Por canal</button>
-      <button onClick={filtrarPorCanalYUsuario} className=' ml-1  border border-purple-800  bg-purple-400'>Filtrar Por canal Y Usario</button>
-      <button onClick={filtrarTodos} className=' ml-1  border border-purple-800  bg-purple-400'>Todos Los Mensajes </button>
-      <button onClick={actualizarMensajes} className=' ml-1  border border-green-800  bg-green-400'>Actualizar Mensajes </button>
-
-      </section>
-        </section>
-
-          {mensajesFiltrados.map((mensaje) => (
-            <div key={mensaje.id} className='text-white flex flex-col mt-3'>
-              <p className='border border-purple-200 w-min rounded-xl ml-1  opacity-80  text-sm '> @{mensaje.usuario} </p>
-              <p className='border  border-purple-400  rounded-2xl text-lg pl-2 pr-2'>{mensaje.contenidoMensaje}</p>
-            </div>
-          ))}
-      </section>
+      <h1 className='text-white text-3xl text-center mb-4 '>Mensajes guardados en la base de datos</h1>
+      <Filtros
+        setUsuarioFiltrado={setUsuarioFiltrado}
+        setCanalFiltrado={setCanalFiltrado}
+        filtrarPorUsuario={filtrarPorUsuario}
+        filtrarPorCanal={filtrarPorCanal}
+        filtrarPorCanalYUsuario={filtrarPorCanalYUsuario}
+        filtrarTodos={filtrarTodos}
+        actualizarMensajes={actualizarMensajes}
+      />
+      <MensajesList mensajesFiltrados={mensajesFiltrados} />
     </main>
   )
 }
