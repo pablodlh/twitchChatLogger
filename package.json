@@ -1,0 +1,7 @@
+{
+"scripts": {
+    "start:server": "ts-node ./server/index.ts",
+    "start:client": "cd client && npm run dev",
+    "install": "cd client && npm install && cd ../server && npm install"
+  }
+}
