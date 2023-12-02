@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 
 interface Mensaje {
@@ -40,7 +41,7 @@ const App = (): any => {
     fetch('http://localhost:8080/mensajes')
       .then(response => response.json())
       .then(data => {
-        console.log("mensajes actualizados")
+        console.log('mensajes actualizados')
         setTodosLosMensajes(data)
         setMensajesFiltrados(data)
       })
@@ -56,7 +57,7 @@ const App = (): any => {
           <input
             className='text-black ml-2'
             id='filtrarUsuario'
-            onChange={e => setUsuarioFiltrado(e.target.value)}
+            onChange={e => { setUsuarioFiltrado(e.target.value) }}
           />
         </label>
 
@@ -64,7 +65,7 @@ const App = (): any => {
           <input
             className='text-black ml-2'
             id='filtrarUsuario'
-            onChange={e => setCanalFiltrado(e.target.value)}
+            onChange={e => { setCanalFiltrado(e.target.value) }}
           />
         </label>
 
