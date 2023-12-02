@@ -1,4 +1,10 @@
-APLICACIÓN PARA GUARDAR LOS MENSAJES DE UN CHAT DE TWITCH EN UNA BASE DE DATOS MONGODB
+
+# Twitch Chat Logger
+
+Una aplicación web para guardar el registro de mensajes de uno o varios canales de Twitch
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
 
 DESPLIEGUE:
 1. Crear y configurar la base de datos con mongoDB, pasos para desplegarla con docker:
