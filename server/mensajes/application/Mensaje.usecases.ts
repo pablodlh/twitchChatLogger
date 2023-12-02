@@ -11,14 +11,12 @@ export class MensajeUseCases{
       async getAllMensajes() {
         return await this.mensajeRepository.getAllMensajes();
       }
+      async deleteAllMensajes() {
+        return await this.mensajeRepository.deleteAllMensajes();
+      }
 
       async addMensaje(usuario:string, contenidoMensaje:string,canal: string){
         return await this.mensajeRepository.addMensaje(usuario,contenidoMensaje,canal)
 
       }
-      
-
-
-
-
 }

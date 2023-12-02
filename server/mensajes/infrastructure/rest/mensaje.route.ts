@@ -19,4 +19,14 @@ router.get("/", async(req,res: Response) => {
     }
 })
 
+router.delete("/", async(req,res: Response) => {
+    try{
+        const mensajes = await mensajeRepostory.deleteAllMensajes();
+        res.json(mensajes)
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Serasdfasver Error" });
+    }
+})
+
 export default router;

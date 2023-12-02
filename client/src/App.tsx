@@ -34,6 +34,17 @@ const App = (): JSX.Element => {
   const filtrarTodos = (): void => {
     setMensajesFiltrados(todosLosMensajes)
   }
+  const borrarMensajes = (): void => {
+    fetch('http://localhost:8080/mensajes', {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(data => {
+        setTodosLosMensajes(data)
+        setMensajesFiltrados(data)
+      })
+
+  }
 
   const actualizarMensajes = (): void => {
     fetch('http://localhost:8080/mensajes')
@@ -56,6 +67,7 @@ const App = (): JSX.Element => {
         filtrarPorCanalYUsuario={filtrarPorCanalYUsuario}
         filtrarTodos={filtrarTodos}
         actualizarMensajes={actualizarMensajes}
+        borrarMensajes={borrarMensajes}
       />
       <MensajesList mensajesFiltrados={mensajesFiltrados} />
     </main>

@@ -24,6 +24,11 @@ export default class MensajeRepositoryMongoDB implements MensajeRepository {
         return mensajes;
         
     }
+    
+    async deleteAllMensajes(): Promise<any> {
+        return await collections.mensajes.deleteMany({})
+        
+    }
 
 
     async addMensaje(usuarioRecibido: string,contenidoMensajeRecibido: string, canalRecibido: string){

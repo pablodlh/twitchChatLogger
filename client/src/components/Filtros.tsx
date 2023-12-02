@@ -9,6 +9,7 @@ interface FiltrosProps {
   filtrarPorCanalYUsuario: () => void
   filtrarTodos: () => void
   actualizarMensajes: () => void
+  borrarMensajes: () => void
 }
 
 const Filtros = ({
@@ -18,7 +19,8 @@ const Filtros = ({
   filtrarPorCanal,
   filtrarPorCanalYUsuario,
   filtrarTodos,
-  actualizarMensajes
+  actualizarMensajes,
+  borrarMensajes
 }: FiltrosProps): JSX.Element => {
   return (
     <section className='flex flex-col items-start ml-6'>
@@ -49,6 +51,7 @@ const Filtros = ({
           <button onClick={filtrarPorCanalYUsuario} className='ml-1 border border-purple-800 bg-purple-400'>Filtrar Por Canal Y Usuario</button>
           <button onClick={filtrarTodos} className='ml-1 border border-purple-800 bg-purple-400'>Todos Los Mensajes</button>
           <button onClick={actualizarMensajes} className='ml-1 border border-green-800 bg-green-400'>Actualizar Mensajes</button>
+          <button onClick={borrarMensajes} className='ml-1 border border-red-800 bg-red-400'>Borrar Mensajes</button>
         </section>
       </section>
     </section>
