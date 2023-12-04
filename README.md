@@ -6,12 +6,17 @@ Una aplicación web para guardar el registro de mensajes de uno o varios canales
 
 Para desplegar el proyecto:
 
+Desplegar una base de datos mongoDB en local
 ```bash
-  npm run start:mongo
+  mongo
+  use twitch-database
+  db.createCollection("mensajes")  
 ```
+Desplegar el servidor
 ```bash
   npm run start:server
 ```
+Desplegar el cliente
 ```bash
   npm run start:client
 ```
